@@ -31,10 +31,10 @@ const relevant = $dataset
 	})
 
 const Section = ({ emoji, ...props }) => (
-	<div className="px-8 pt-16 pb-4">
-		<h1 id="smileys-and-emotion" className="font-semibold text-sm tracking-wider uppercase text-gray-500">
+	<div className="px-8 pt-12 pb-6">
+		<h1 id="smileys-and-emotion" className="font-semibold text-base tracking-widest uppercase text-gray-500">
 			<a href="#smileys-and-emotion">
-				<span className="emoji">{emoji}</span>{" "}
+				<span className="emoji">{emoji}</span>{"\u00a0".repeat(2)}
 				{props.children}
 			</a>
 		</h1>
@@ -43,7 +43,7 @@ const Section = ({ emoji, ...props }) => (
 
 // TODO: Add hover / focus animations (bounce)
 const Grid = React.memo(({ emojis, ...props }) => (
-	<div className="grid grid-cols-4 xs:grid-cols-5 sm:grid-cols-6 md:grid-cols-7 lg:grid-cols-8 gap-2">
+	<div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10">
 		{emojis.map(each => (
 			// TODO: Animate-in background circle
 			<div key={each.codePoints.join("-")} className="pb-1/1 relative hover:bg-gray-200 rounded-full transition duration-150">
@@ -51,34 +51,23 @@ const Grid = React.memo(({ emojis, ...props }) => (
 
 					{/* Emoji */}
 					<div className="p-1 absolute inset-0 flex flex-row justify-center items-center pointer-events-none z-10">
-						<p className="pointer-events-auto" style={{ fontSize: "3.25em", fontFamily: "'Apple Color Emoji'" }}>
+						<p className="pointer-events-auto" style={{ fontSize: "3em", fontFamily: "'Apple Color Emoji'" }}>
 							{each.emoji}
 						</p>
 					</div>
 
 					{/* Description */}
-					<div className="p-1 absolute inset-0 flex flex-row justify-center items-end">
-						<p className="text-center text-xs leading-snug truncate text-gray-600">
-							{each.description}
-						</p>
-					</div>
+					{/* <div className="p-1 absolute inset-0 flex flex-row justify-center items-end"> */}
+					{/* 	<p className="text-center text-xs leading-snug truncate text-gray-600"> */}
+					{/* 		{each.description} */}
+					{/* 	</p> */}
+					{/* </div> */}
 
 				</div>
 			</div>
 		))}
 	</div>
 ))
-
-// 😀 Smileys & Emotion
-// 👤 People & Body
-// 🏽 Component
-// 🐻 Animals & Nature
-// 🍔 Food & Drink
-// 🚘 Travel & Places
-// ⚽ Activities
-// 💡 Objects
-// 🔣 Symbols
-// 🏳️ Flags
 
 const App = props => {
 	const [search, setSearch] = React.useState("")
@@ -116,10 +105,10 @@ const App = props => {
 				</Section>
 				<Grid emojis={emojis} />
 
-				<Section emoji="👤">
-					People & Body
-				</Section>
-				<Grid emojis={emojis} />
+				{/* <Section emoji="👤"> */}
+				{/* 	People & Body */}
+				{/* </Section> */}
+				{/* <Grid emojis={emojis} /> */}
 
 				{/* <Section emoji="🏽"> */}
 				{/* 	Component */}
