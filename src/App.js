@@ -30,6 +30,17 @@ const relevant = $dataset
 		return true
 	})
 
+const Section = ({ emoji, ...props }) => (
+	<div className="px-8 pt-16 pb-4">
+		<h1 id="smileys-and-emotion" className="font-semibold text-sm tracking-wider uppercase text-gray-500">
+			<a href="#smileys-and-emotion">
+				<span className="emoji">{emoji}</span>{" "}
+				{props.children}
+			</a>
+		</h1>
+	</div>
+)
+
 // TODO: Add hover / focus animations (bounce)
 const Grid = React.memo(({ emojis, ...props }) => (
 	<div className="grid grid-cols-4 xs:grid-cols-5 sm:grid-cols-6 md:grid-cols-7 lg:grid-cols-8 gap-2">
@@ -100,38 +111,54 @@ const App = props => {
 				</div>
 
 				{/* Grid */}
-				<div className="px-8 pt-16 pb-4">
-					<h1 id="smileys-and-emotion" className="font-semibold text-sm tracking-wider uppercase text-gray-500">
-						<a href="#smileys-and-emotion">
-							<span className="emoji">😀</span>{" "}
-							{/* <span className="underline"> */}
-								Smileys & Emotion
-							{/* </span> */}
-						</a>
-					</h1>
-				</div>
+				<Section emoji="😀">
+					Smileys & Emotion
+				</Section>
 				<Grid emojis={emojis} />
-				<div className="px-8 pt-16 pb-4">
-					<h1 id="smileys-and-emotion" className="font-semibold text-sm tracking-wider uppercase text-gray-500">
-						<a href="#smileys-and-emotion">
-							<span className="emoji">😀</span>{" "}
-							{/* <span className="underline"> */}
-								Smileys & Emotion
-							{/* </span> */}
-						</a>
-					</h1>
-				</div>
+
+				<Section emoji="👤">
+					People & Body
+				</Section>
 				<Grid emojis={emojis} />
-				<div className="px-8 pt-16 pb-4">
-					<h1 id="smileys-and-emotion" className="font-semibold text-sm tracking-wider uppercase text-gray-500">
-						<a href="#smileys-and-emotion">
-							<span className="emoji">😀</span>{" "}
-							{/* <span className="underline"> */}
-								Smileys & Emotion
-							{/* </span> */}
-						</a>
-					</h1>
-				</div>
+
+				{/* <Section emoji="🏽"> */}
+				{/* 	Component */}
+				{/* </Section> */}
+				{/* <Grid emojis={emojis} /> */}
+
+				<Section emoji="🐻">
+					Animals & Nature
+				</Section>
+				<Grid emojis={emojis} />
+
+				<Section emoji="🍔">
+					Food & Drink
+				</Section>
+				<Grid emojis={emojis} />
+
+				<Section emoji="🚘">
+					Travel & Places
+				</Section>
+				<Grid emojis={emojis} />
+
+				<Section emoji="⚽">
+					Activities
+				</Section>
+				<Grid emojis={emojis} />
+
+				<Section emoji="💡">
+					Objects
+				</Section>
+				<Grid emojis={emojis} />
+
+				<Section emoji="🔣">
+					Symbols
+				</Section>
+				<Grid emojis={emojis} />
+
+				<Section emoji="🏳️">
+					Flags
+				</Section>
 				<Grid emojis={emojis} />
 
 			</div>
@@ -140,3 +167,4 @@ const App = props => {
 }
 
 export default App
+
