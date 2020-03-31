@@ -39,7 +39,7 @@ const Grid = React.memo(({ emojis, ...props }) => (
 
 					{/* Emoji */}
 					<div className="p-1 absolute inset-0 flex flex-row justify-center items-center pointer-events-none z-10">
-						<p className="pointer-events-auto" style={{ fontSize: "3.25em", fontFamily: "Apple Color Emoji" }}>
+						<p className="pointer-events-auto" style={{ fontSize: "3.25em", fontFamily: "'Apple Color Emoji'" }}>
 							{each.emoji}
 						</p>
 					</div>
@@ -57,7 +57,17 @@ const Grid = React.memo(({ emojis, ...props }) => (
 	</div>
 ))
 
-// 😀🐻🍔⚽🏙️💡🔣🏳️
+// 😀 Smileys & Emotion
+// 👤 People & Body
+// 🏽 Component
+// 🐻 Animals & Nature
+// 🍔 Food & Drink
+// 🚘 Travel & Places
+// ⚽ Activities
+// 💡 Objects
+// 🔣 Symbols
+// 🏳️ Flags
+
 const App = props => {
 	const [search, setSearch] = React.useState("")
 	const [emojis, setEmojis] = React.useState(() => relevant)
