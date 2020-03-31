@@ -8,7 +8,7 @@ const components = $dataset
 
 // TODO: Precompute
 const relevant = $dataset
-	.slice(0, 32)
+	// .slice(0, 32)
 	.filter(each => {
 		// Status:
 		if (each.status !== "fully-qualified") {
@@ -57,11 +57,11 @@ const Grid = React.memo(({ emojis, ...props }) => (
 					</div>
 
 					{/* Description */}
-					{/* <div className="p-1 absolute inset-0 flex flex-row justify-center items-end"> */}
-					{/* 	<p className="text-center text-xs leading-snug truncate text-gray-600"> */}
-					{/* 		{each.description} */}
-					{/* 	</p> */}
-					{/* </div> */}
+					<div className="p-1 absolute inset-0 flex flex-row justify-center items-end">
+						<p className="text-center text-xs leading-snug truncate text-gray-600">
+							{each.description}
+						</p>
+					</div>
 
 				</div>
 			</div>
@@ -101,66 +101,60 @@ const App = props => {
 				{/**/}
 				{/* TODO: Add hover / focus animations (bounce) */}
 				<div className="!-mt-8 pt-8 sticky top-0 bg-white z-40">
-					{/* <div className="px-8 h-16 bg-white rounded-lg-xl shadow-hero-lg overflow-none"> */}
-					<div className="px-8 bg-white rounded-lg-xl shadow-hero-lg overflow-none" style={{ height: "4.5rem" }}>
-						<input className="w-full h-full text-2xl bg-transparent outline-none" type="text" placeholder={`🔍${" ".repeat(2)}Search up to ${relevant.length} emojis (Unicode 12.0)`} value={search} onChange={e => setSearch(e.target.value)} spellCheck={false} />
+					{/* <div className="px-8 h-16 bg-white rounded-lg shadow-hero-lg overflow-none"> */}
+					<div className="px-8 h-16 bg-white rounded-lg shadow-hero-lg overflow-none">
+						<input className="w-full h-full text-2xl bg-transparent outline-none" type="text" placeholder={`🔍${" ".repeat(2)}Search ${relevant.length} emojis (Unicode 12.0)`} value={search} onChange={e => setSearch(e.target.value)} spellCheck={false} />
 					</div>
 				</div>
 
-				<Section emoji="🕘">
-					Frequently Used
-				</Section>
+				{/* Grid */}
+				<div className="h-8" />
 				<Grid emojis={emojis} />
 
-				<Section emoji="😀">
-					Smileys & Emotion
-				</Section>
-				<Grid emojis={emojis} />
-
+				{/* <Section emoji="🕘"> */}
+				{/* 	Frequently Used */}
+				{/* </Section> */}
+				{/* <Grid emojis={emojis} /> */}
+				{/* <Section emoji="😀"> */}
+				{/* 	Smileys & Emotion */}
+				{/* </Section> */}
+				{/* <Grid emojis={emojis} /> */}
 				{/* <Section emoji="👤"> */}
 				{/* 	People & Body */}
 				{/* </Section> */}
 				{/* <Grid emojis={emojis} /> */}
-
 				{/* <Section emoji="🏽"> */}
 				{/* 	Component */}
 				{/* </Section> */}
 				{/* <Grid emojis={emojis} /> */}
-
-				<Section emoji="🐻">
-					Animals & Nature
-				</Section>
-				<Grid emojis={emojis} />
-
-				<Section emoji="🍔">
-					Food & Drink
-				</Section>
-				<Grid emojis={emojis} />
-
-				<Section emoji="🚘">
-					Travel & Places
-				</Section>
-				<Grid emojis={emojis} />
-
-				<Section emoji="⚽">
-					Activities
-				</Section>
-				<Grid emojis={emojis} />
-
-				<Section emoji="💡">
-					Objects
-				</Section>
-				<Grid emojis={emojis} />
-
-				<Section emoji="🔣">
-					Symbols
-				</Section>
-				<Grid emojis={emojis} />
-
-				<Section emoji="🏳️">
-					Flags
-				</Section>
-				<Grid emojis={emojis} />
+				{/* <Section emoji="🐻"> */}
+				{/* 	Animals & Nature */}
+				{/* </Section> */}
+				{/* <Grid emojis={emojis} /> */}
+				{/* <Section emoji="🍔"> */}
+				{/* 	Food & Drink */}
+				{/* </Section> */}
+				{/* <Grid emojis={emojis} /> */}
+				{/* <Section emoji="🚘"> */}
+				{/* 	Travel & Places */}
+				{/* </Section> */}
+				{/* <Grid emojis={emojis} /> */}
+				{/* <Section emoji="⚽"> */}
+				{/* 	Activities */}
+				{/* </Section> */}
+				{/* <Grid emojis={emojis} /> */}
+				{/* <Section emoji="💡"> */}
+				{/* 	Objects */}
+				{/* </Section> */}
+				{/* <Grid emojis={emojis} /> */}
+				{/* <Section emoji="🔣"> */}
+				{/* 	Symbols */}
+				{/* </Section> */}
+				{/* <Grid emojis={emojis} /> */}
+				{/* <Section emoji="🏳️"> */}
+				{/* 	Flags */}
+				{/* </Section> */}
+				{/* <Grid emojis={emojis} /> */}
 
 			</div>
 		</div>
