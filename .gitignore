@@ -6,11 +6,9 @@
 # macOS
 .DS_Store
 
-# Node
-/node_modules
-
 # Production
 /build
 
 # Yarn
 /*.log*
+/node_modules
