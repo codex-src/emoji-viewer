@@ -101,6 +101,7 @@ const App = props => {
 				{/**/}
 				{/* TODO: Add hover / focus animations (bounce) */}
 				<div className="!-mt-8 pt-8 sticky top-0 bg-white z-40">
+					{/* <div className="px-8 h-16 bg-white rounded-lg-xl shadow-hero-lg overflow-none"> */}
 					<div className="px-8 bg-white rounded-lg-xl shadow-hero-lg overflow-none" style={{ height: "4.5rem" }}>
 						<input className="w-full h-full text-2xl bg-transparent outline-none" type="text" placeholder={`🔍${" ".repeat(2)}Search up to ${relevant.length} emojis (Unicode 12.0)`} value={search} onChange={e => setSearch(e.target.value)} spellCheck={false} />
 					</div>
