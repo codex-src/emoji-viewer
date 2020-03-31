@@ -32,12 +32,12 @@ const relevant = $dataset
 
 const Section = ({ emoji, ...props }) => (
 	<div className="px-8 pt-12 pb-6">
-		<h1 id="smileys-and-emotion" className="font-semibold text-base tracking-widest uppercase text-gray-500">
+		<p id="smileys-and-emotion" className="font-semibold uppercase text-sm tracking-widest text-blue-500">
 			<a href="#smileys-and-emotion">
-				<span className="emoji">{emoji}</span>{"\u00a0".repeat(2)}
+				<span className="emoji">{emoji}</span>{" "}
 				{props.children}
 			</a>
-		</h1>
+		</p>
 	</div>
 )
 
@@ -46,12 +46,12 @@ const Grid = React.memo(({ emojis, ...props }) => (
 	<div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10">
 		{emojis.map(each => (
 			// TODO: Animate-in background circle
-			<div key={each.codePoints.join("-")} className="pb-1/1 relative hover:bg-gray-200 rounded-full transition duration-150">
+			<div key={each.codePoints.join("-")} className="pb-1/1 relative hover:bg-blue-100 rounded-xl transition duration-150">
 				<div className="absolute inset-0">
 
 					{/* Emoji */}
 					<div className="p-1 absolute inset-0 flex flex-row justify-center items-center pointer-events-none z-10">
-						<p className="pointer-events-auto" style={{ fontSize: "3em", fontFamily: "'Apple Color Emoji'" }}>
+						<p className="-mb-1 pointer-events-auto" style={{ fontSize: "3em", /* lineHeight: 1, */ fontFamily: "'Apple Color Emoji'" }}>
 							{each.emoji}
 						</p>
 					</div>
@@ -90,10 +90,17 @@ const App = props => {
 		<div className="py-32 flex flex-row justify-center">
 			<div className="px-6 w-full max-w-screen-lg">
 
+				<div className="h-48 flex flex-row justify-center items-center">
+					<h1 className="text-center font-semibold text-5xl tracking-tight" style={{ fontFamily: "'Poppins'" }}>
+						emoji database{" "}
+						{/* <span className="emoji">😂</span> */}
+					</h1>
+				</div>
+
 				{/* Search */}
 				{/**/}
 				{/* TODO: Add hover / focus animations (bounce) */}
-				<div className="-mt-8 pt-8 sticky top-0 bg-white z-40">
+				<div className="!-mt-8 pt-8 sticky top-0 bg-white z-40">
 					<div className="px-8 h-16 bg-white rounded-lg shadow-hero-lg overflow-none">
 						<input className="w-full h-full text-2xl bg-transparent outline-none" type="text" placeholder={`🔍${" ".repeat(4)}Search up to ${relevant.length} emojis (Unicode 12.0)`} value={search} onChange={e => setSearch(e.target.value)} spellCheck={false} />
 					</div>
