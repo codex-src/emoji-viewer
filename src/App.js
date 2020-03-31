@@ -8,7 +8,7 @@ const components = $dataset
 
 // TODO: Precompute
 const relevant = $dataset
-	// .slice(0, 32)
+	.slice(0, 32)
 	.filter(each => {
 		// Status:
 		if (each.status !== "fully-qualified") {
@@ -34,7 +34,8 @@ const relevant = $dataset
 const Grid = React.memo(({ emojis, ...props }) => (
 	<div className="grid grid-cols-4 xs:grid-cols-5 sm:grid-cols-6 md:grid-cols-7 lg:grid-cols-8 gap-2">
 		{emojis.map(each => (
-			<div key={each.codePoints.join("-")} className="pb-1/1 relative hover:bg-gray-200 rounded-full transition duration-75">
+			// TODO: Animate-in background circle
+			<div key={each.codePoints.join("-")} className="pb-1/1 relative hover:bg-gray-200 rounded-full transition duration-150">
 				<div className="absolute inset-0">
 
 					{/* Emoji */}
@@ -99,7 +100,38 @@ const App = props => {
 				</div>
 
 				{/* Grid */}
-				<div className="h-8" />
+				<div className="px-8 pt-16 pb-4">
+					<h1 id="smileys-and-emotion" className="font-semibold text-sm tracking-wider uppercase text-gray-500">
+						<a href="#smileys-and-emotion">
+							<span className="emoji">😀</span>{" "}
+							{/* <span className="underline"> */}
+								Smileys & Emotion
+							{/* </span> */}
+						</a>
+					</h1>
+				</div>
+				<Grid emojis={emojis} />
+				<div className="px-8 pt-16 pb-4">
+					<h1 id="smileys-and-emotion" className="font-semibold text-sm tracking-wider uppercase text-gray-500">
+						<a href="#smileys-and-emotion">
+							<span className="emoji">😀</span>{" "}
+							{/* <span className="underline"> */}
+								Smileys & Emotion
+							{/* </span> */}
+						</a>
+					</h1>
+				</div>
+				<Grid emojis={emojis} />
+				<div className="px-8 pt-16 pb-4">
+					<h1 id="smileys-and-emotion" className="font-semibold text-sm tracking-wider uppercase text-gray-500">
+						<a href="#smileys-and-emotion">
+							<span className="emoji">😀</span>{" "}
+							{/* <span className="underline"> */}
+								Smileys & Emotion
+							{/* </span> */}
+						</a>
+					</h1>
+				</div>
 				<Grid emojis={emojis} />
 
 			</div>

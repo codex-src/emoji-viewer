@@ -6,6 +6,12 @@
 	background: #fbfdfe;
 }
 
+.emoji {
+	vertical-align: -12.5%;
+	font-size: 125%;
+	line-height: 1;
+}
+
 .rounded-lg-xl {
 	border-radius: 0.75rem;
 }
