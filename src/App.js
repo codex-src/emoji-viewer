@@ -32,20 +32,25 @@ const relevant = $dataset
 
 // TODO: Add hover / focus animations (bounce)
 const Grid = React.memo(({ emojis, ...props }) => (
-	<div className="grid grid-cols-4 xs:grid-cols-5 sm:grid-cols-6 md:grid-cols-7 lg:grid-cols-8 gap-3">
+	<div className="grid grid-cols-4 xs:grid-cols-5 sm:grid-cols-6 md:grid-cols-7 lg:grid-cols-8 gap-2">
 		{emojis.map(each => (
-			<div key={each.codePoints.join("-")} className="pb-1/1 relative">
+			<div key={each.codePoints.join("-")} className="pb-1/1 relative hover:bg-gray-200 rounded-lg-xl transition duration-75">
 				<div className="absolute inset-0">
+
+					{/* Emoji */}
 					<div className="p-1 absolute inset-0 flex flex-row justify-center items-center pointer-events-none z-10">
 						<p className="pointer-events-auto" style={{ fontSize: "3.25em" }}>
 							{each.emoji}
 						</p>
 					</div>
+
+					{/* Description */}
 					<div className="p-1 absolute inset-0 flex flex-row justify-center items-end">
 						<p className="text-center text-xs leading-snug truncate text-gray-600">
 							{each.description}
 						</p>
 					</div>
+
 				</div>
 			</div>
 		))}
