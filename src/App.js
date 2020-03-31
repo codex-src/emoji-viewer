@@ -36,8 +36,8 @@ const Grid = React.memo(({ emojis, ...props }) => (
 		{emojis.map(each => (
 			<div key={each.codePoints.join("-")} className="pb-1/1 relative">
 				<div className="absolute inset-0">
-					<div className="p-1 absolute inset-0 flex flex-row justify-center items-center">
-						<p style={{ fontSize: "3.25em" }}>
+					<div className="p-1 absolute inset-0 flex flex-row justify-center items-center pointer-events-none z-10">
+						<p className="pointer-events-auto" style={{ fontSize: "3.25em" }}>
 							{each.emoji}
 						</p>
 					</div>
@@ -46,13 +46,6 @@ const Grid = React.memo(({ emojis, ...props }) => (
 							{each.description}
 						</p>
 					</div>
-
-					{/* <div className="flex flex-row justify-center items-center h-full"> */}
-					{/* 	<span style={{ fontSize: "3.25em" }} data-description={each.description}> */}
-					{/* 		{each.emoji} */}
-					{/* 	</span> */}
-					{/* 	{each.description} */}
-					{/* </div> */}
 				</div>
 			</div>
 		))}
@@ -66,7 +59,8 @@ const App = props => {
 	React.useEffect(() => {
 		const id = setTimeout(() => {
 			const emojis = relevant.filter(each => (
-				each.description.toLowerCase().includes(search.toLowerCase()))
+				each.description.toLowerCase().includes(search.toLowerCase())) || // Word search
+				each.emoji === search // Emoji search
 			)
 			setEmojis(emojis)
 		}, 25)
@@ -81,8 +75,8 @@ const App = props => {
 
 				{/* Search */}
 				<div className="-mt-8 pt-8 sticky top-0 bg-white z-40">
-					<div className="px-6 h-16 bg-white rounded-lg shadow-hero-lg overflow-none">
-						<input className="w-full h-full text-2xl bg-transparent outline-none" type="text" placeholder={`Search up to ${relevant.length} emojis (Unicode 12.0)`} value={search} onChange={e => setSearch(e.target.value)} spellCheck={false} />
+					<div className="px-8 h-16 bg-white rounded-lg shadow-hero-lg overflow-none">
+						<input className="w-full h-full text-2xl bg-transparent outline-none" type="text" placeholder={`🔍${" ".repeat(4)}Search up to ${relevant.length} emojis (Unicode 12.0)`} value={search} onChange={e => setSearch(e.target.value)} spellCheck={false} />
 					</div>
 				</div>
 
