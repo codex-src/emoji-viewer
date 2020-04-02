@@ -1,3 +1,4 @@
+import copyToClipboard from "./helpers/copyToClipboard"
 import React from "react"
 import $dataset from "./UNICODE_13-0_DO-NOT-EDIT.generated.json"
 
@@ -41,30 +42,59 @@ const Section = ({ emoji, ...props }) => (
 	</div>
 )
 
+const EmojiContainer = ({ emoji, ...props }) => {
+	const [description, setDescription] = React.useState(emoji.description)
+
+	const handleClick = async e => {
+		if (!navigator.clipboard) {
+			copyToClipboard(emoji.emoji)
+			setDescription("copied!")
+			setTimeout(() => {
+				setDescription(emoji.description)
+			}, 1e3)
+		} else {
+			try {
+				await navigator.clipboard.writeText(emoji.emoji)
+			} catch (error) {
+				console.error(error)
+				return // Eager return
+			}
+		}
+		setDescription("copied!")
+		setTimeout(() => {
+			setDescription(emoji.description)
+		}, 1e3)
+	}
+
+	return (
+		<div className="pb-1/1 relative hover:bg-blue-100 rounded-xl transition duration-150 cursor-pointer" onClick={handleClick}>
+			<div className="absolute inset-0">
+
+				{/* Emoji */}
+				<div className="p-1 absolute inset-0 flex flex-row justify-center items-center pointer-events-none z-10">
+					<p className="mb-3 pointer-events-auto" style={{ fontSize: "3em", /* lineHeight: 1, */ fontFamily: "'Apple Color Emoji'" }}>
+						{emoji.emoji}
+					</p>
+				</div>
+
+				{/* Description */}
+				<div className="p-2 absolute inset-0 flex flex-row justify-center items-end xl:p-3">
+					<p className="text-center text-xs leading-snug truncate text-gray-600">
+						{description}
+					</p>
+				</div>
+
+			</div>
+		</div>
+	)
+}
+
 // TODO: Add hover / focus animations (bounce)
 const Grid = React.memo(({ emojis, ...props }) => (
 	<div className="grid grid-cols-6 sm:grid-cols-7 md:grid-cols-8">
-		{emojis.map(each => (
+		{emojis.map(emoji => (
 			// TODO: Animate-in background circle
-			<div key={each.codePoints.join("-")} className="pb-1/1 relative hover:bg-blue-100 rounded-xl transition duration-150">
-				<div className="absolute inset-0">
-
-					{/* Emoji */}
-					<div className="p-1 absolute inset-0 flex flex-row justify-center items-center pointer-events-none z-10">
-						<p className="-mb-1 pointer-events-auto" style={{ fontSize: "3em", /* lineHeight: 1, */ fontFamily: "'Apple Color Emoji'" }}>
-							{each.emoji}
-						</p>
-					</div>
-
-					{/* Description */}
-					<div className="p-1 absolute inset-0 flex flex-row justify-center items-end">
-						<p className="text-center text-xs leading-snug truncate text-gray-600">
-							{each.description}
-						</p>
-					</div>
-
-				</div>
-			</div>
+			<EmojiContainer emoji={emoji} key={emoji.codePoints.join("-")} />
 		))}
 	</div>
 ))
@@ -88,7 +118,7 @@ const App = props => {
 
 	return (
 		<div className="py-32 flex flex-row justify-center">
-			<div className="px-6 w-full max-w-screen-md">
+			<div className="px-6 w-full md:max-w-screen-md xl:max-w-screen-lg">
 
 				<div className="h-48 flex flex-row justify-center items-center">
 					<h1 className="text-center font-semibold text-5xl tracking-tight" style={{ fontFamily: "'Poppins'" }}>
